@@ -3,23 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Piano Keyboard</title>
     <style>
+        /* Center the entire keyboard on the viewport*/
+        body {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #555;
+        }
         #keyboard {
             background-color: #333;
             border: 1px solid black;
             padding: 200px 20px 30px 20px;
+            /*Add border radius for keyboard*/
+            border-radius: 10px;
+            /*Add a subtle drop shadow to the keyboard container for depth*/
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
         #keypad {
-            background-color: red;
+            background-color: red; /*kept for reference/debugging from original, butideally removed*/
             display: flex;
+            /*keypad fills 100% of the available width*/
+            width: 100%;
+            /*add border radius for keypad*/
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden; /*hides the red background*/
         }
+
+        .key {
+            /*Add smooth CSS transitions to all hover and active states*/
+            transition: 0.1s;
+            position: relative;
+            display: flex; 
+            justify-content: center;
+        }
+
+        .noteLabel {
+            position: absolute;
+            bottom: 5px;
+            font-size: 10px;
+            text-align: center;
+            user-select: none;
+        }
+
         .whiteKey {
             height: 240px;
             width: 40px;
             background-color: white;
             border: 1px solid black;
+            z-index: 1;
+            border-radius: 0 0 5px5px;
+            box-shadow: inset 0 -8px 0 rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.1);
         }
+
+        .whiteKey:hover{
+            background-color: #f0f0f0;
+            cursor:pointer;
+        }
+
+        .whiteKey:active{
+            background-color: #e0e0e0;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .whiteKey .noteLabel {
+            color: black;
+        }
+
         .blackKey {
             height: 140px;
             width: 24px;
@@ -27,73 +81,94 @@
             border: 1px solid black;
             margin: 0 -13px;
             z-index: 2;
+            border-radius: 0 0 3px 3px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .blackKey:hover{
+            background-color: #333;
+            cursor:pointer;
+        }
+
+        .blackKey:active{
+            background-color: #222;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .blackKey .noteLabel {
+            color: white;
         }
     </style>
 </head>
 <body>
     <div id="keyboard">
         <div id="keypad">            
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>            
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>
-            <div class="whiteKey"></div>
-            <div class="blackKey"></div>            
-            <div class="whiteKey"></div>                       
-            <div class="whiteKey"></div>
+            <div class="whiteKey"><span class="noteLabel">C</span></div>
+            <div class="blackKey"><span class="noteLabel">C#</span></div>
+            <div class="whiteKey"><span class="noteLabel">D</span></div>
+            <div class="blackKey"><span class="noteLabel">D#</span></div>
+            <div class="whiteKey"><span class="noteLabel">E</span></div>            
+            <div class="whiteKey"><span class="noteLabel">F</span></div>
+            <div class="blackKey"><span class="noteLabel">F#</span></div>
+            <div class="whiteKey"><span class="noteLabel">G</span></div>
+            <div class="blackKey"><span class="noteLabel">G#</span></div>
+            <div class="whiteKey"><span class="noteLabel">A</span></div>
+            <div class="blackKey"><span class="noteLabel">A#</span></div>            
+            <div class="whiteKey"><span class="noteLabel">B</span></div>
+
+            <div class="whiteKey"><span class="noteLabel">C</span></div>
+            <div class="blackKey"><span class="noteLabel">C#</span></div>
+            <div class="whiteKey"><span class="noteLabel">D</span></div>
+            <div class="blackKey"><span class="noteLabel">D#</span></div>
+            <div class="whiteKey"><span class="noteLabel">E</span></div>            
+            <div class="whiteKey"><span class="noteLabel">F</span></div>
+            <div class="blackKey"><span class="noteLabel">F#</span></div>
+            <div class="whiteKey"><span class="noteLabel">G</span></div>
+            <div class="blackKey"><span class="noteLabel">G#</span></div>
+            <div class="whiteKey"><span class="noteLabel">A</span></div>
+            <div class="blackKey"><span class="noteLabel">A#</span></div>            
+            <div class="whiteKey"><span class="noteLabel">B</span></div>
+
+
+            <div class="whiteKey"><span class="noteLabel">C</span></div>
+            <div class="blackKey"><span class="noteLabel">C#</span></div>
+            <div class="whiteKey"><span class="noteLabel">D</span></div>
+            <div class="blackKey"><span class="noteLabel">D#</span></div>
+            <div class="whiteKey"><span class="noteLabel">E</span></div>            
+            <div class="whiteKey"><span class="noteLabel">F</span></div>
+            <div class="blackKey"><span class="noteLabel">F#</span></div>
+            <div class="whiteKey"><span class="noteLabel">G</span></div>
+            <div class="blackKey"><span class="noteLabel">G#</span></div>
+            <div class="whiteKey"><span class="noteLabel">A</span></div>
+            <div class="blackKey"><span class="noteLabel">A#</span></div>            
+            <div class="whiteKey"><span class="noteLabel">B</span></div>
+
+
+            <div class="whiteKey"><span class="noteLabel">C</span></div>
+            <div class="blackKey"><span class="noteLabel">C#</span></div>
+            <div class="whiteKey"><span class="noteLabel">D</span></div>
+            <div class="blackKey"><span class="noteLabel">D#</span></div>
+            <div class="whiteKey"><span class="noteLabel">E</span></div>            
+            <div class="whiteKey"><span class="noteLabel">F</span></div>
+            <div class="blackKey"><span class="noteLabel">F#</span></div>
+            <div class="whiteKey"><span class="noteLabel">G</span></div>
+            <div class="blackKey"><span class="noteLabel">G#</span></div>
+            <div class="whiteKey"><span class="noteLabel">A</span></div>
+            <div class="blackKey"><span class="noteLabel">A#</span></div>            
+            <div class="whiteKey"><span class="noteLabel">B</span></div>
+
+            <div class="whiteKey"><span class="noteLabel">C</span></div>
+            <div class="blackKey"><span class="noteLabel">C#</span></div>
+            <div class="whiteKey"><span class="noteLabel">D</span></div>
+            <div class="blackKey"><span class="noteLabel">D#</span></div>
+            <div class="whiteKey"><span class="noteLabel">E</span></div>            
+            <div class="whiteKey"><span class="noteLabel">F</span></div>
+            <div class="blackKey"><span class="noteLabel">F#</span></div>
+            <div class="whiteKey"><span class="noteLabel">G</span></div>
+            <div class="blackKey"><span class="noteLabel">G#</span></div>
+            <div class="whiteKey"><span class="noteLabel">A</span></div>
+            <div class="blackKey"><span class="noteLabel">A#</span></div>            
+            <div class="whiteKey"><span class="noteLabel">B</span></div>
         </div>
     </div>
 </body>
