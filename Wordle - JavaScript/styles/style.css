@@ -1,25 +1,166 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Start elements from the top */
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px;
+    background-color: #121213; /* Exercise 9: Dark background */
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+}
+
+#board {
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.row {
+    display: flex;
+    gap: 5px;
+}
+
 .cell {
     width: 50px;
     height: 50px;
-    border: 1px solid #777;
+    border: 2px solid #3a3a3c; /* Exercise 9: Improved border color */
     border-radius: 5px;
-    background-color: #bbb;
-    font-size: 40px;
-    padding: 4px;
+    background-color: transparent;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
     text-transform: uppercase;
     text-align: center;
-    display: inline-block;
-    margin: 2px;
+    line-height: 50px; 
+    margin: 0;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    
+    /* Exercise 7: Add CSS transitions */
+    transition: transform 0.6s, background-color 0.6s;
+    transform-style: preserve-3d;
 }
 
+/* --- Exercise 9: Improved color scheme --- */
 .green {
-    background-color: lightgreen;
+    background-color: #538d4e; /* Wordle green */
+    border-color: #538d4e;
 }
 
 .yellow {
-    background-color: lightyellow;
+    background-color: #b59f3b; /* Wordle yellow */
+    border-color: #b59f3b;
 }
 
 .red {
-    background-color: lightcoral;
+    background-color: #3a3a3c; /* Wordle gray/not in word */
+    border-color: #3a3a3c;
+}
+
+/* --- Exercise 7: Flip animation --- */
+.flip {
+    transform: rotateX(360deg);
+}
+
+/* --- Exercise 3 & 9: Input and Button Styling --- */
+#inputControls {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#guessInput {
+    padding: 10px;
+    font-size: 1.1em;
+    border: 2px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    flex-grow: 1;
+    /* Exercise 9: Hover and focus states */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#guessInput:focus {
+    outline: none;
+    border-color: #538d4e;
+    box-shadow: 0 0 5px #538d4e;
+}
+
+#guessButton, #newGameButton {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #538d4e;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    /* Exercise 9: Hover and focus states */
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#guessButton:hover, #newGameButton:hover {
+    background-color: #6aaa64;
+}
+
+#guessButton:active, #newGameButton:active {
+    transform: scale(0.98);
+}
+
+#newGameButton {
+    background-color: #3c91e6;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#newGameButton:hover {
+    background-color: #5da0e9;
+}
+
+/* --- Exercise 2: Styled Error Message --- */
+#messageDisplay {
+    min-height: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#messageDisplay.error {
+    color: #ff4d4d;
+}
+
+/* --- Exercise 10: Statistics Display --- */
+#statsDisplay {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 8px;
+    font-size: 0.9em;
+}
+
+#statsDisplay div {
+    text-align: center;
+    line-height: 1.4;
 }
