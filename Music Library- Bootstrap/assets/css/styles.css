@@ -1,0 +1,18 @@
+/* Card hover and equal-height helpers */
+.card { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 10px 20px rgba(0,0,0,0.12); }
+.card-img-top { height: 180px; object-fit: cover; width: 100%; }
+
+@media (max-width: 576px) {
+  .card-img-top { height: 140px; }
+}
+
+/* Slight overlay effect for accessibility */
+.card .card-img-top::after { content: ''; }
+
+/* Modal tracklist styling */
+#modalBody ol { padding-left: 1rem; }
+#modalBody a { text-decoration: none; }
+
+/* Make buttons touch-friendly */
+.btn { min-height: 40px; }
