@@ -8,3 +8,40 @@ body {
 #chartCanvas {
     border: 1px solid black;
 }
+
+.container{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:16px;
+}
+.controls{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+.main{ position:relative }
+.stats{
+    width:200px;
+    font-family:Arial, sans-serif;
+}
+.tooltip{
+    position:absolute;
+    background:rgba(255,255,255,0.9);
+    border:1px solid #333;
+    padding:6px;
+    font-size:12px;
+    pointer-events:none;
+}
+
+/* Themes */
+:root{
+    --bg:#ffffff;
+    --fg:#000000;
+    --grid:rgba(128,128,128,0.6);
+}
+body.dark{ --bg:#111; --fg:#eee; --grid:rgba(200,200,200,0.2) }
+body.high{ --bg:#000; --fg:#fff; --grid:rgba(255,255,0,0.6) }
+body{ background:var(--bg); color:var(--fg) }
+#chartCanvas{ background:transparent }
